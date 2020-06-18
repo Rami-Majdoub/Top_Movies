@@ -7,20 +7,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Navigation Over Screens',
+      title: 'Top Movies',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
       ),
-//      home: MainPage(),
-
-      // Declare routes
-      routes: {
-        // Main initial route
-        '/': (context) => MainPage(),
-        // Second route
-        '/second': (context) => SecondPage(),
-      },
-      initialRoute: '/',
+      home: MainPage(),
     );
   }
 }
@@ -30,37 +21,114 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) =>
       Scaffold(
         appBar: AppBar(
-          title: Text('Navigation over screens'),
+          title: Text('Top Movies'),
         ),
-        body: Container(
+        body: Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Container(
           child: Column(
             children: <Widget>[
-              // Navigate using declared route name
-              RaisedButton(
-                onPressed: () => Navigator.pushNamed(context, '/second'),
-                child: Text('Navigate using routes'),
-              ),
-              // Navigate using simple push method
+              // version 1
+            //   RaisedButton(
+            //     onPressed: () =>
+            //     Navigator.push( context, MaterialPageRoute(builder: (context) => MulanPage()) ),
+            //     child: Column(
+            //         children: <Widget>[
+            //             Image.network('https://upload.wikimedia.org/wikipedia/en/1/17/Mulan_%282020_film%29_poster.jpg', 
+            //                 width: 200, height: 200),
+            //             Text('Mulan')
+            //         ]
+            //     ),
+            //   ),
+
+            // version 2
               RaisedButton(
                 onPressed: () =>
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SecondPage()),
-                    ),
-                child: Text('Navigate using push method'),
-              )
+                Navigator.push( context, MaterialPageRoute(builder: (context) => SonicPage()) ),
+                child: MovieScreen(movie: 
+                Movie(
+                    imageUrl: 'https://upload.wikimedia.org/wikipedia/en/c/c1/Sonic_the_Hedgehog_poster.jpg',
+                    title: 'Sonic (2020)')),
+              ),
+
+              RaisedButton(
+                onPressed: () =>
+                Navigator.push( context, MaterialPageRoute(builder: (context) => MulanPage()) ),
+                child: MovieScreen(movie: 
+                Movie(
+                    imageUrl: 'https://upload.wikimedia.org/wikipedia/en/1/17/Mulan_%282020_film%29_poster.jpg',
+                    title: 'Mulan (2020)')),
+              ),
             ],
           ),
-        ),
+        ),),
       );
 }
+class Movie {
+  final String imageUrl;
+  final String title;
 
-class SecondPage extends StatelessWidget {
+  Movie({this.imageUrl, this.title});
+}
+
+class MovieScreen extends StatelessWidget {
+    final Movie movie;
+
+    MovieScreen({this.movie});
+    
+    @override
+    Widget build(BuildContext context) {
+    var value1 = movie.imageUrl;
+    var value2 = movie.title;
+
+    return Container(
+        child: Column(
+            children: <Widget>[
+                Image.network(value1, width: 200, height: 200),
+                Text(value2),
+            ]
+        ),
+    );
+    }
+}
+
+class SonicPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Second screen'),
+        title: Text('Sonic (2020)'),
+      ),
+      body: Container(
+        child: Column(
+            children: <Widget>[
+                Row(
+                    children: <Widget>[
+                        Image.network('https://upload.wikimedia.org/wikipedia/en/c/c1/Sonic_the_Hedgehog_poster.jpg',
+                        height: 300),
+                        Column(
+                            children: <Widget>[
+                                Text('Sonic'),
+                                Text('Genre: Comedy'),
+                                Text('Release year: 2020'),
+
+                            ]
+                        )
+                    ]
+                )
+            ]
+        ),
+      ),
+    );
+  }
+}
+
+class MulanPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Mulan (2020)'),
       ),
       body: Container(
         child: RaisedButton(

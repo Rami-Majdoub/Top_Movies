@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sky_engine/ui/ui.dart';
 import 'package:navigation_over_screens/widgets/movie.dart';
 
 class MoviePage extends StatelessWidget {

@@ -28,7 +28,7 @@ class MainPage extends StatelessWidget {
         body: Padding(
             padding: EdgeInsets.all(16.0),
             child: Container(
-                child: Column(
+                child: Row(
                     children: <Widget>[
                         MovieSelector(),
                     ],

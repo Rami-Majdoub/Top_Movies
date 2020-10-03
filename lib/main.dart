@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:navigation_over_screens/widgets/movie_selector.dart';
 
 void main() => runApp(MyApp());
@@ -10,30 +11,34 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Top Movies',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primaryColor: Color(0xff020101),
       ),
       home: MainPage(),
     );
   }
 }
 
-
 class MainPage extends StatelessWidget {
   @override
-  Widget build(BuildContext context) =>
-      Scaffold(
+  Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text('Top Movies'),
+          centerTitle: true,
+          title: Text(
+            'Top Movies',
+            style: GoogleFonts.carterOne(fontSize: 30, color: Colors.red),
+          ),
         ),
-        body: Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Container(
-                child: Row(
-                    children: <Widget>[
-                        MovieSelector(),
-                    ],
-                ),
+        body: 
+        Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Container(
+            child: Row(
+              children: <Widget>[
+                MovieSelector(),
+              ],
             ),
+          ),
         ),
+        backgroundColor: Colors.grey[200],
       );
 }

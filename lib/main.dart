@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Top Movies',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primaryColor: Color(0xff020101),
       ),
       home: MainPage(),
     );
@@ -25,10 +25,11 @@ class MainPage extends StatelessWidget {
           centerTitle: true,
           title: Text(
             'Top Movies',
-            style: GoogleFonts.carterOne(fontSize: 30),
+            style: GoogleFonts.carterOne(fontSize: 30, color: Colors.red),
           ),
         ),
-        body: Padding(
+        body: 
+        Padding(
           padding: EdgeInsets.all(16.0),
           child: Container(
             child: Row(
@@ -38,5 +39,6 @@ class MainPage extends StatelessWidget {
             ),
           ),
         ),
+        backgroundColor: Colors.grey[200],
       );
 }

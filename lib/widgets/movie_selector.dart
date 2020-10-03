@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:navigation_over_screens/widgets/movie.dart';
 import 'package:navigation_over_screens/widgets/movie_page.dart';
 
@@ -37,7 +38,7 @@ class _MovieSelectorState extends State<MovieSelector> {
       'distributed_by': 'Walt Disney Studios Motion Pictures',
     },
     {
-      'title': 'The SpongeBob Movie:\n Sponge on the Run',
+      'title': 'The SpongeBob Movie:Sponge on the Run',
       'image_url':
           'https://upload.wikimedia.org/wikipedia/en/3/38/The_SpongeBob_Movie_Sponge_on_the_Run.jpg',
       'genre': 'live-action computer-animated adventure comedy',
@@ -127,17 +128,22 @@ class _MovieSelectorState extends State<MovieSelector> {
                               builder: (context) => MoviePage(movie: movie)));
                     },
                     child: Center(
-                        child: Container(
-                      padding: EdgeInsets.all(5.0),
-                      color: Colors.white,
-                      child: Column(children: <Widget>[
-                        Hero(
-                            tag: movie.imageUrl,
-                            child: Image.network(movie.imageUrl,
-                                width: 150, height: 150)),
-                        Text(movie.title),
-                      ]),
-                    )),
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                          Hero(
+                              tag: movie.imageUrl,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(15),
+                                child: Image.network(movie.imageUrl,
+                                    width: 100, height: 150,fit: BoxFit.cover,),
+                              )),
+                          Expanded(
+                              child: Text(
+                            movie.title,
+                            style: GoogleFonts.permanentMarker(fontSize: 19),
+                          )),
+                        ])),
                   );
                 })));
   }

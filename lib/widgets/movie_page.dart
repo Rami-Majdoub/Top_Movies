@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:navigation_over_screens/widgets/movie.dart';
 
 class MoviePage extends StatelessWidget {
@@ -11,8 +12,8 @@ class MoviePage extends StatelessWidget {
       children: <TextSpan>[
         TextSpan(
             text: '$prop: ',
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
-        TextSpan(text: value),
+            style: GoogleFonts.suezOne(fontSize: 25)),
+        TextSpan(text: value,style: GoogleFonts.contrailOne(fontSize: 20,fontWeight: FontWeight.w300)),
       ],
     ));
   }
@@ -21,7 +22,11 @@ class MoviePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('${movie.title}'),
+          centerTitle: true,
+          title: Text('${movie.title}',
+            style: GoogleFonts.carterOne(fontSize: 30),
+          
+          ),
         ),
         body: ListView(padding: EdgeInsets.all(10.0), children: <Widget>[
           Column(
@@ -31,10 +36,17 @@ class MoviePage extends StatelessWidget {
                     child: Column(children: <Widget>[
                   Hero(
                       tag: movie.imageUrl,
-                      child: Image.network(movie.imageUrl, height: 300)),
-                  Text(movie.title,
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image.network(movie.imageUrl, height: 300))),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    movie.title,
+                    style: GoogleFonts.permanentMarker(
+                        fontSize: 32, fontWeight: FontWeight.w700),
+                  )
                 ])),
                 Padding(
                   padding: EdgeInsets.only(top: 10.0),

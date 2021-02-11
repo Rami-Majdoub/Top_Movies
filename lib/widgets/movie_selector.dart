@@ -34,7 +34,7 @@ var movies_response = [
     },
     {
         'title': 'The SpongeBob Movie:\n Sponge on the Run',
-        'image_url':'https://upload.wikimedia.org/wikipedia/en/3/38/The_SpongeBob_Movie_Sponge_on_the_Run.jpg',
+        'image_url':'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTNE5quR7o845W3iG0YtBW210Noll9lDgwO5XQBXci5ggyjtVnw',
         'genre': 'live-action computer-animated adventure comedy',
         'rating': null,
         'short_description': 'A film based on the animated television series SpongeBob SquarePants.',
